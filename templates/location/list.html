@@ -1,22 +1,27 @@
 {% extends "base/theme.html" %}
 
-{% block main_content %}
-    <section></section>
-    
-        <div class="row">
-            <div class="col-md-2"></div>
-                <div class="col-md-8">
+    {% block main_content %}
+       <section></section>
+        <div class="">
+            <div class="col-md-12">
                     {% for location in object_list %}
-                    <div class=''>
-                    <h3><a href="{{ location.get_absolute_url }}">{{ location.title }}</a></h3>
-                    
-                    {% if location.address %}<p><b>Location: </b>{{ location.address }}</p>{% endif %}
-                    {% if location.hours %}<p><b>Coffeed Hours: </b>{{ location.hours }}</p>{% endif %}
-                    {% if location.image_file %}<p><img class="img-responsive" src="{{ location.image_file.url }}"></img>{% endif %}
-                     <p>{{ location.description }}</p>
+                   
+                <div class='row'>
+                    <div class="col-md-8">
+                            <h3><a href="{{ location.get_absolute_url }}">{{ location.title }}</a></h3>
                     </div>
-                    {% endfor %}
+                    <div class="col-md-4 text-right">
+                           <h3>{% include 'base/rating.html' with rating=location.get_average_rating %}</h3>
+                    </div>
                 </div>
-            <div class="col-md-2"></div>
+                
+                        {% if location.address %}<p><b>Location: </b>{{ location.address }}</p>{% endif %}
+                        {% if location.hours %}<p><b>Coffeed Hours: </b>{{ location.hours }}</p>{% endif %}
+                        {% if location.image_file %}<p><img class="img-responsive" src="{{ location.image_file.url }}"></img>{% endif %}
+                         <p>{{ location.description }}</p>
+                        {% endfor %}
+                
+            </div>
+            
         </div>
-{% endblock %}
+    {% endblock %}

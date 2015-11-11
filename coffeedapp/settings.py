@@ -46,6 +46,8 @@ INSTALLED_APPS = (
     
     #add your project name here
     'core',
+    #add app for create form functionality
+    'widget_tweaks'
 )
 
 MIDDLEWARE_CLASSES = (

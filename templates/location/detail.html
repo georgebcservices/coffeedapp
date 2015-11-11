@@ -2,16 +2,33 @@
 
 {% block main_content %}
 	<section></section>
-		<div class="row main-content">
-		 <div class="col-md-2"></div>
-		 <div class="col-md-8">
-		 <div class=''>
-		 <p>{{ location.image_file }}</p>
-		 <p>{{ location.description }}</p>
-		 <p>{{ location.hours }}</p>
-		 <p>{{ location.address }}</p>
-		 </div>
-		 </div>
-		 <div class="col-md-2"></div>
-		</div>
+		
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<h3><p>{{ location.title }}</p></h3>
+				<b>Coffeed Hours: </b><p>{{ location.hours }}</p>
+			 	<b>Address: </b><p>{{ location.address }}</p>
+				<p>{{ location.image_file }}</p>
+			 	
+			</div>
+		    <div class="col-md-12">
+				 <a type="button" href="{% url 'location_update' pk=location.id %}" class="btn btn-default pull-right">Edit</a>
+				 {% if user_review %}
+				 <a type="button" href="{% url 'review_update' pk=location.id %}" class="btn btn-default pull-right">Update Review</a>
+				 {% else %}
+				 <a type="button" href="{% url 'review_create' pk=location.id %}" class="btn btn-default pull-right">Create Review</a>
+				 {% endif %}
+			</div>
+		    <div class="col-md-2"></div>
+		    <div class="col-md-8">
+		      	<b>Reviews: </b>
+		    	{% for review in location.get_reviews %}
+				{% include 'base/review.html' with location=location %}
+	 			{% endfor %}
+	 		</div>
+	 			 		
+	 		<div class="col-md-2"></div>
+	 	</div>
+	
 {% endblock %}
