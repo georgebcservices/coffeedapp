@@ -53,10 +53,25 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                  {% block navigation %}
+        {% if user.is_authenticated %}
+            <li>
+        <a class="page-scroll" href="/location">Find a Coffee Shop</a>
+        </li>
+            <li>
+                <a class="page-scroll" href="/location/create/">Add a Location</a>
+            <li>
+                <a class="page-scroll" <a href="/admin/logout/">Log out</a>
+            </li> 
+
+            </li> 
+             {% else %}
+             <li>
+                    <a class="page-scroll" href="/location">Find a Coffee Shop</a>
+                    </li>
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
+                    
                     <li>
                         <a class="page-scroll" href="#services">How It Works</a>
                     </li>
@@ -66,7 +81,13 @@
                     <li>
                         <a class="page-scroll" href="#contact">Invite Me</a>
                     </li>
-                    {% endblock %}
+                    <li>
+                    <a class="page-scroll" href="/entrance/">Log In</a>
+                    </li> 
+                    {%endif%}
+              {% block navigation %}
+              {% endblock %}
+                
                 </ul>
                 
             </div>

@@ -8,8 +8,9 @@
 			<div class="col-md-8">
 				<h3><p>{{ location.title }}</p></h3>
 				<b>Coffeed Hours: </b><p>{{ location.hours }}</p>
+				{% include 'location/specifics.html' with location=location %}
 			 	<b>Address: </b><p>{{ location.address }}</p>
-				<p>{{ location.image_file }}</p>
+				
 			 	
 			</div>
 		    <div class="col-md-12">

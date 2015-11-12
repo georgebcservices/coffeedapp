@@ -33,6 +33,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Added directly from DJango notes for signin functionality
+TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
+"django.core.context_processors.debug",
+"django.core.context_processors.i18n",
+"django.core.context_processors.media",
+"django.core.context_processors.static",
+"django.core.context_processors.tz",
+"django.contrib.messages.context_processors.messages",
+"django.core.context_processors.request"
+)
 
 # Application definition
 
@@ -47,7 +57,11 @@ INSTALLED_APPS = (
     #add your project name here
     'core',
     #add app for create form functionality
-    'widget_tweaks'
+    'widget_tweaks',
+    #add next 2 apps for signup functionality
+    'sitegate',
+    'bootstrap3',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -150,4 +164,5 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWSSecretKey')
 AWS_ACCESS_KEY_ID = os.environ.get('AWSAccessKeyId')
 
 AWS_STORAGE_BUCKET_NAME = 'chriscoffeedapp'
+
 
