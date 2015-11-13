@@ -3,12 +3,22 @@ from django.db import models
 from django.core.urlresolvers import reverse
 # Used for creating user reviews
 from django.contrib.auth.models import User
+# used to add logout functionality missing in sitegate
+# from django.contrib.auth import logout
+# from django.shortcuts import render
+
 # Upload picture or images of coffee shops
 import os
 import uuid
 # import avg for averaging reviews per location
 from django.db.models import Avg
 
+
+#used for the user logout
+# def logout_view(request):
+#     logout(request)
+#     return render(request, 'index.html')
+    
 
 # used for the user ratings
 RATING_CHOICES = (
@@ -61,6 +71,7 @@ class Location(models.Model):
     image_file = models.ImageField(upload_to=upload_to_location, null=True, blank=True)
     address = models.TextField(null=True, blank=True)
     hours = models.TextField(null=True, blank=True)
+    user = models.ForeignKey(User)
     created_at = models.DateTimeField(auto_now_add=True)
     wifi = models.IntegerField(choices=WIFI_CHOICES, null=True, blank=True)
     seating = models.IntegerField(choices=PLURAL_CHOICES, null=True, blank=True)
@@ -86,6 +97,9 @@ class Location(models.Model):
 
     def get_reviews(self):
         return self.review_set.all()
+
+    def get_reviews_user(self):
+        return self.review_set.user()
 
 class Review(models.Model):
     location = models.ForeignKey(Location)
