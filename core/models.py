@@ -98,9 +98,7 @@ class Location(models.Model):
     def get_reviews(self):
         return self.review_set.all()
 
-    def get_reviews_user(self):
-        return self.review_set.user()
-
+      
 class Review(models.Model):
     location = models.ForeignKey(Location)
     user = models.ForeignKey(User)
