@@ -2,6 +2,13 @@
 
     {% block main_content %}
        <section></section>
+        <div class="data-layer">
+             <ul>
+             {% for location in object_list %}
+             <li class="location-data" data-latitude="{{ location.position.latitude }}" data-longitude="{{ location.position.longitude }}" data-id="{{ location.id }}">{{ location.title }}</li>
+             {% endfor %}
+             </ul>
+        </div>
         <div class="">
             <div class="col-md-12">
                     {% for location in object_list %}

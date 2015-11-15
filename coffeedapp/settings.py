@@ -72,6 +72,8 @@ INSTALLED_APPS = (
     #add next 2 apps for signup functionality
     'sitegate',
     'bootstrap3',
+    #add geopositioning
+    'geoposition'
 
 )
 

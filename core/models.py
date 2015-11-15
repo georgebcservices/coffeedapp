@@ -12,6 +12,9 @@ import os
 import uuid
 # import avg for averaging reviews per location
 from django.db.models import Avg
+# for geopositioning
+from geoposition.fields import GeopositionField
+
 
 
 #used for the user logout
@@ -70,8 +73,9 @@ class Location(models.Model):
     description = models.TextField(null=True, blank=True)
     image_file = models.ImageField(upload_to=upload_to_location, null=True, blank=True)
     address = models.TextField(null=True, blank=True)
+    position = GeopositionField(null=True, blank=True)
     hours = models.TextField(null=True, blank=True)
-    user = models.ForeignKey(User)
+    #user = models.ForeignKey(User)
     created_at = models.DateTimeField(auto_now_add=True)
     wifi = models.IntegerField(choices=WIFI_CHOICES, null=True, blank=True)
     seating = models.IntegerField(choices=PLURAL_CHOICES, null=True, blank=True)
