@@ -102,6 +102,9 @@ class Location(models.Model):
     def get_reviews(self):
         return self.review_set.all()
 
+    def user_review(self):
+        return self.review_set.user()
+
       
 class Review(models.Model):
     location = models.ForeignKey(Location)

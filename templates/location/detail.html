@@ -35,27 +35,24 @@ for review in object_list
 					 <a type="button" href="{% url 'location_update' pk=location.id %}" class="btn btn-default pull-right">Edit Location Details</a>
 					{% endif %}
 
-					{% for review in location.get_reviews %}
-						
-						{% empty %}
-							<a type="button" href="{% url 'review_create' pk=location.id %}" class="btn btn-default pull-right">Create Review</a>
-						
-	 				{% endfor %}
-										 
-										
-					{% for review in location.get_reviews %}
-						{% if user == review.user %}
-							<a type="button" href="{% url 'review_update' pk=location.id %}" class="btn btn-default pull-right">Update Review</a>
-
-						{% else %}	
-							<a type="button" href="{% url 'review_create' pk=location.id %}" class="btn btn-default pull-right">Create Review</a>
-																		
-	 					{% endif %}
-	 				{% endfor %}					
+														 			
 				{%endif%}
 			</div>
 		</
-		<div class="row">	
+		<div class="col-md-12">
+    <hr>
+                {% if user.is_authenticated %}
+                        {% for review in location.get_reviews %}
+                        {% if user = review.user%}
+                        <a type="button" href="{% url 'review_update' pk=location.id %}" class="btn btn-default pull-right">Update Review</a>
+                        {% else %}
+                        <a type="button" href="{% url 'review_create' pk=location.id %}" class="btn btn-default pull-right">Create your Review</a>
+                        {% endif %}
+                        {%endfor%}
+                {% endif %}
+    </div>
+
+    <div class="row">	
 
 			 <div class="col-md-2"></div>
 		    <div class="col-md-8">

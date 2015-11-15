@@ -5,6 +5,7 @@ dj-database-url==0.3.0
 dj-static==0.0.6
 Django==1.8.6
 django-appconf==1.0.1
+django-bootstrap-pagination==1.5.1
 django-bootstrap3==6.2.2
 django-etc==0.7.1
 django-geoposition==0.2.2

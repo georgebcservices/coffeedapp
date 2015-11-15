@@ -73,7 +73,9 @@ INSTALLED_APPS = (
     'sitegate',
     'bootstrap3',
     #add geopositioning
-    'geoposition'
+    'geoposition',
+    #add pagination
+    'bootstrap_pagination',
 
 )
 
